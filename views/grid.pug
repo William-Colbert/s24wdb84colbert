@@ -1,0 +1,27 @@
+extends layout
+
+block content
+    h1= title
+    p Before Conversion: #{query.rows} and #{query.cols}
+    - let rows = Number(query.rows)
+    - let cols = Number(query.cols)
+    p After Conversion: #{rows} and #{cols}
+    if(Number.isInteger(rows) == false || Number.isInteger(cols) == false)
+      p One of the values (rows or cols) is not an integer
+    else if(rows > 13 || rows < 3)
+      p rows is out of range (3-13 inclusive)
+    else if(cols > 13 || cols < 3)
+      p cols is out of range (3-13 inclusive)
+    else
+      table#outer
+        - for(let i=0; i<rows; i++) {
+            tr#middle
+              - for(let j=0; j<cols; j++) {
+                  - let checkRows = i+1;
+                  - let checkCols = j+1;
+                  if(checkRows >= checkCols)
+                    td= checkCols
+                  else
+                    td= checkRows
+              - }
+        - }

@@ -1,0 +1,31 @@
+{
+  "name": "assign10",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "start": "node ./bin/www"
+  },
+  "dependencies": {
+    "cookie-parser": "~1.4.4",
+    "debug": "^4.3.4",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "http-errors": "^2.0.0",
+    "mongodb": "^6.5.0",
+    "mongoose": "^8.2.4",
+    "morgan": "^1.10.0",
+    "pug": "^3.0.2"
+  },
+  "description": "Assignment for pug",
+  "main": "app.js",
+  "keywords": [
+    "pug",
+    "server",
+    "lab",
+    "assignment",
+    "web",
+    "development"
+  ],
+  "author": "William Colbert",
+  "license": "ISC"
+}
