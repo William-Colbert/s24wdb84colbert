@@ -26,8 +26,20 @@ exports.doctor_detail = function(req, res){
     res.send('NOT IMPLEMENTED: Doctor detail: ' + req.params.id);
 };
 
-exports.doctor_create_post = function(req, res){
-    res.send('NOT IMPLEMENTED: Doctor create POST');
+exports.doctor_create_post = async function(req, res){
+    console.log(req.body)
+    let document = new Doctor();
+    document.years_of_experience = req.body.years_of_experience;
+    document.specialty = req.body.specialty;
+    document.number_of_patients = req.body.number_of_patients;
+    try{
+        let result = await document.save();
+        res.send(result);
+    }
+    catch(err){
+        res.status(500);
+        res.send(`{"error":${err}}`);
+    }
 };
 
 exports.doctor_delete = function(req, res){
