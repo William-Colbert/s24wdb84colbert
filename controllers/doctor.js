@@ -11,6 +11,17 @@ exports.doctor_list = async function(req, res){
     }
 };
 
+exports.doctor_view_all_Page = async function(req, res){
+    try{
+        theDoctors = await Doctor.find();
+        res.render('doctors', {title:'Doctor Search Results', results:theDoctors});
+    }
+    catch(err){
+        res.status(500);
+        res.send(`{"error":${err}}`);
+    }
+};
+
 exports.doctor_detail = function(req, res){
     res.send('NOT IMPLEMENTED: Doctor detail: ' + req.params.id);
 };
