@@ -1,7 +1,14 @@
 var Doctor = require('../models/doctor');
 
-exports.doctor_list = function(req, res){
-    res.send('NOT IMPLEMENTED: Doctor list');
+exports.doctor_list = async function(req, res){
+    try{
+        theDoctors = await Doctor.find();
+        res.send(theDoctors);
+    }
+    catch(err){
+        res.status(500);
+        res.send(`{"error":${err}}`);
+    }
 };
 
 exports.doctor_detail = function(req, res){
