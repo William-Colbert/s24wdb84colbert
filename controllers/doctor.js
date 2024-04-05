@@ -53,6 +53,24 @@ exports.doctor_delete = function(req, res){
     res.send('NOT IMPLEMENTED: Doctor delete DELETE ' + req.params.id);
 };
 
-exports.doctor_update_put = function(req, res){
-    res.send('NOT IMPLEMENTED: Doctor update PUT' + req.params.id);
+exports.doctor_update_put = async function(req, res){
+    console.log(`update on id ${req.params.id} with body ${JSON.stringify(req.body)}`);
+    try{
+        let toUpdate = await Doctor.findById(req.params.id);
+        if(req.body.years_of_experience){
+            toUpdate.years_of_experience = req.body.years_of_experience;
+        }
+        if(req.body.specialty){
+            toUpdate.specialty = req.body.specialty;
+        }
+        if(req.body.number_of_patients){
+            toUpdate.number_of_patients = req.body.number_of_patients;
+        }
+        let result = await toUpdate.save();
+        console.log("Sucess " + result);
+        res.send(result);
+    } catch (err){
+        res.status(500);
+        res.send(`{"error":${err}:Update for id ${req.params.id} failed`);
+    }
 };
