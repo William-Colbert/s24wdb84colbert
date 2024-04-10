@@ -1,0 +1,22 @@
+extends layout
+
+block content 
+  h1= title 
+
+  -let doctorid = toShow._id 
+  -let doctor_years_of_experience = toShow.years_of_experience 
+  -let doctorspecialty = toShow.specialty
+  -let doctor_number_of_patients = toShow.number_of_patients
+  div 
+    div.row
+      div(class='doctorAttr mr-3') Doctor's ID is: 
+      div #{doctorid}
+    div.row
+      div(class='doctorAttr mr-3') Doctor's Years of Experience is: 
+      div #{doctor_years_of_experience}
+    div.row
+      div(class='doctorAttr mr-3') Doctor's Specialty is: 
+      div #{doctorspecialty} 
+    div.row
+      div(class='doctorAttr mr-3') Doctor's Number of Patients is: 
+      div #{doctor_number_of_patients}  
