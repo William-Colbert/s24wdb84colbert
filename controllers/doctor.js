@@ -49,8 +49,16 @@ exports.doctor_create_post = async function(req, res){
     }
 };
 
-exports.doctor_delete = function(req, res){
-    res.send('NOT IMPLEMENTED: Doctor delete DELETE ' + req.params.id);
+exports.doctor_delete = async function(req, res){
+    console.log("delete " + req.params.id)
+    try{
+        result = await Doctor.findByIdAndDelete(req.params.id)
+        console.log("Removed " + result)
+        res.send(result)
+    } catch (err){
+        res.status(500)
+        res.send(`{"error": Error deleting ${err}}`);
+    }
 };
 
 exports.doctor_update_put = async function(req, res){
