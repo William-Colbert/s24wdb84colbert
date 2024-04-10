@@ -105,3 +105,15 @@ exports.doctor_create_Page = function(req, res){
         res.send(`{'error': '${err}'}`);
     }
 };
+
+exports.doctor_update_Page = async function(req, res){
+    console.log("update view for item " + req.query.id)
+    try{
+        let result = await Doctor.findById(req.query.id)
+        res.render('doctorupdate', {title:'Doctor Update', toShow:result});
+    }
+    catch(err){
+        res.status(500)
+        res.send(`{'error':'${err}'}`);
+    }
+};

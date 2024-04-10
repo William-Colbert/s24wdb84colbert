@@ -13,3 +13,7 @@ module.exports = router;
 /* GET create doctor page */
 router.get('/create', doctor_controlers.doctor_create_Page);
 module.exports = router;
+
+/* GET create update page */
+router.get('/update', doctor_controlers.doctor_update_Page);
+module.exports = router;

@@ -1,0 +1,39 @@
+extends layout
+
+block content
+  h1= title 
+
+  -let doctorid = toShow._id 
+  -let years_of_experience = toShow.years_of_experience 
+  -let specialty = toShow.specialty 
+  -let number_of_patients = toShow.number_of_patients 
+
+  div.row(class='mb-2')
+    div.mr-1 ID is 
+    div #{doctorid}
+  -let actionid = "/resource/doctors/" + doctorid 
+  form(id='DoctorForm', action=actionid, method="PUT")
+    div.form-group
+      label.doctorAttr(for="years_of_experience") Years of Experience 
+      input#years_of_experience(type="number", name='years_of_experience', value=years_of_experience)
+    div.form-group
+      label.doctorAttr(for="specialty") Specialty 
+      input#specialty(type="text", name='specialty', value=specialty) 
+    div.form-group
+      label.doctorAttr(for="number_of_patients") Number of Patients 
+      input#number_of_patients(type="number", name='number_of_patients', value=number_of_patients) 
+    input(type="submit")
+  script.
+    document.forms['DoctorForm'].addEventListener('submit', (event) => {
+     event.preventDefault();
+    fetch(event.target.action, {
+     method: 'PUT',
+     body: new URLSearchParams(new FormData(event.target))
+    }).then((resp) => {
+     return resp.json();
+    }).then((body) => {
+     alert("Update succeded")
+    }).catch((error) => {
+     alert("Update failed " + error )
+     });
+    });
