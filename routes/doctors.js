@@ -9,3 +9,7 @@ module.exports = router;
 /* GET detail doctor page */
 router.get('/detail', doctor_controlers.doctor_view_one_Page);
 module.exports = router;
+
+/* GET create doctor page */
+router.get('/create', doctor_controlers.doctor_create_Page);
+module.exports = router;
