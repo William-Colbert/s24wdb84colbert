@@ -1,0 +1,51 @@
+extends layout
+
+block content 
+  h1= title
+
+  if(toShow == null)
+    h2 No instance to delete 
+  else 
+
+    -let doctorid = toShow._id 
+    -let doctor_years_of_experience = toShow.years_of_experience 
+    -let doctorspecialty = toShow.specialty
+    -let doctor_number_of_patients = toShow.number_of_patients
+    -let actionid = "/resource/doctors/" + doctorid 
+    script let actionid = "#{actionid}"
+    div 
+      div.row
+        div(class='doctorAttr mr-3') Doctor's ID is: 
+        div #{doctorid}
+      div.row
+        div(class='doctorAttr mr-3') Doctor's Years of Experience is: 
+        div #{doctor_years_of_experience}
+      div.row
+        div(class='doctorAttr mr-3') Doctor's Specialty is: 
+        div #{doctorspecialty} 
+      div.row
+        div(class='doctorAttr mr-3') Doctor's Number of Patients is: 
+        div #{doctor_number_of_patients}
+    button(class="btn btn-danger m-2" onclick="deleteOnid()") Delete 
+    button(class="btn btn-secondary m-2" onclick="cancel()") Cancel 
+
+  script.
+    function cancel() {
+      window.location.href='/doctors'
+    }
+  script.  
+    function deleteOnid() {
+      console.log("starting delete")
+      fetch(actionid, {
+        method: 'DELETE' 
+      }).then((resp) => {
+        return resp.json(); 
+      }).then((body) => {
+        alert("Delete succeded")
+        window.location.href='/doctors'
+      }).catch((error) => {
+        alert("Delete failed " + error )
+      });
+    }
+
+    

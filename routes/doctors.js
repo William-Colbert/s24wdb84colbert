@@ -17,3 +17,7 @@ module.exports = router;
 /* GET create update page */
 router.get('/update', doctor_controlers.doctor_update_Page);
 module.exports = router;
+
+/* GET delete doctor page */
+router.get('/delete', doctor_controlers.doctor_delete_Page);
+module.exports = router;
