@@ -1,0 +1,51 @@
+body {
+  padding: 50px;
+  font: 14px "Georgia", Helvetica, Arial, sans-serif;
+  background-color: darkblue;
+}
+
+a {
+  color: #00B7FF;
+}
+
+.doctorAttr {
+  display: inline-block;
+  text-align: center;
+  background-color: lightblue;
+  width: 150px;
+  padding: 10px 35px;
+  color: brown;
+}
+
+input[type=number] {
+  width: 10%;
+  padding: 10px 1%;
+  margin: 50px 0;
+  box-sizing: border-box;
+  border: 3px solid darkorange;
+  background-color: lightblue;
+  color: brown;
+}
+
+input[type=text] {
+  width: 10%;
+  padding: 10px 1%;
+  margin: 50px 0;
+  box-sizing: border-box;
+  border: 2px solid darkorange;
+  background-color: lightblue;
+  color: brown;
+}
+
+input[type=submit] {
+  width: 5%;
+  padding: 10px 10px;
+  background-color: lightgray;
+  color: orange;
+  font-weight: bold;
+  
+}
+
+h1 {
+  color: lightgrey;
+}

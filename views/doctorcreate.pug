@@ -1,14 +1,14 @@
-extends layout 
+extends layout2
 
 block content 
   h1= title 
 
   form(id='DoctorForm', action="/resource/doctors", method="POST")
     div.form-group
-      label.doctorAttr(for="years_of_experience") Years of Experience 
+      label.doctorAttr(id="labelstyle", for="years_of_experience") Years of Experience
       input#years_of_experience(type="number", name='years_of_experience')
     div.form-group
-      label.doctorAttr(for="specialty") Specialty 
+      label.doctorAttr(for="specialty") Specialty
       input#specialty(type="text", name='specialty') 
     div.form-group
       label.doctorAttr(for="number_of_patients") Number of Patients 
