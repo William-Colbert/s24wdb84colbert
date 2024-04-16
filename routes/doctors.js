@@ -2,6 +2,15 @@ var express = require('express');
 const doctor_controlers=require('../controllers/doctor');
 var router = express.Router();
 
+const secured = (req, res, next)=> {
+    if(req.user){
+      return next();
+    }
+    //console.log("User not logged in");
+    res.redirect("/login");
+    console.log("User not logged in. Redirected to login page.");
+  }
+
 /* GET home page. */
 router.get('/', doctor_controlers.doctor_view_all_Page);
 module.exports = router;
@@ -15,7 +24,7 @@ router.get('/create', doctor_controlers.doctor_create_Page);
 module.exports = router;
 
 /* GET create update page */
-router.get('/update', doctor_controlers.doctor_update_Page);
+router.get('/update', secured, doctor_controlers.doctor_update_Page);
 module.exports = router;
 
 /* GET delete doctor page */
