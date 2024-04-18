@@ -5,11 +5,21 @@ block content
     - let items = results
     - var x = 0;
     div(class="container-fluid")
+      - let dest2 = `dispatch(\"/doctors/create\")`
+      button.btn(class="btn-primary m1-1", onclick=dest2) Create
       div(class="row m-1")
       each item in items
-        - let destination = `dispatch(\"/doctors/update?id=${item._id}\")` 
+        - let destination = `dispatch(\"/doctors/update?id=${item._id}\")`
+        - let dest3 = `dispatch(\"/doctors/detail?id=${item._id}\")`
+        - let dest4 = `dispatch(\"/doctors/delete?id=${item._id}\")` 
         div(class="row-sm-2", class="m-1") Doctor #{x=x+1}: YOE = #{item.years_of_experience} Specialty = #{item.specialty} NOP = #{item.number_of_patients}
-        button.btn(class="btn-primary m1-1", onclick=destination) Update 
+        button.btn(class="btn-primary m1-1", onclick=destination) Update
+        br
+        br
+        button.btn(class="btn-primary m1-1", onclick=dest3) Detail 
+        br
+        br
+        button.btn(class="btn-primary m1-1", onclick=dest4) Delete
 
     script. 
       function dispatch(path){
