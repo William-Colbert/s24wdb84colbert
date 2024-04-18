@@ -6,9 +6,25 @@ const secured = (req, res, next)=> {
     if(req.user){
       return next();
     }
-    //console.log("User not logged in");
     res.redirect("/login");
-    //console.log("User not logged in. Redirected to login page.");
+  }
+
+  const secured2 = (req, res, next)=> {
+    if(req.user){
+      res.locals.pass = true;
+      return next();
+    }
+      res.locals.pass = false;
+      return next();
+  }
+
+  const secured3 = (req, res, next)=> {
+    if(req.user){
+      res.locals.pass = true;
+      return next();
+    }
+      res.locals.pass = false;
+      return next();
   }
 
 /* GET home page. */
@@ -20,7 +36,7 @@ router.get('/detail', doctor_controlers.doctor_view_one_Page);
 module.exports = router;
 
 /* GET create doctor page */
-router.get('/create', doctor_controlers.doctor_create_Page);
+router.get('/create', secured3, doctor_controlers.doctor_create_Page);
 module.exports = router;
 
 /* GET create update page */
@@ -28,5 +44,5 @@ router.get('/update', secured, doctor_controlers.doctor_update_Page);
 module.exports = router;
 
 /* GET delete doctor page */
-router.get('/delete', doctor_controlers.doctor_delete_Page);
+router.get('/delete', secured2, doctor_controlers.doctor_delete_Page);
 module.exports = router;

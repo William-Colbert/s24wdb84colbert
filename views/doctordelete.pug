@@ -33,19 +33,25 @@ block content
     function cancel() {
       window.location.href='/doctors'
     }
-  script.  
+  script.
+    let pass = #{pass};
     function deleteOnid() {
-      console.log("starting delete")
-      fetch(actionid, {
-        method: 'DELETE' 
-      }).then((resp) => {
-        return resp.json(); 
-      }).then((body) => {
-        alert("Delete succeded")
-        window.location.href='/doctors'
-      }).catch((error) => {
-        alert("Delete failed " + error )
-      });
+      if(pass){
+        console.log("starting delete")
+        fetch(actionid, {
+          method: 'DELETE' 
+        }).then((resp) => {
+          return resp.json(); 
+        }).then((body) => {
+          alert("Delete succeded")
+          window.location.href='/doctors'
+        }).catch((error) => {
+          alert("Delete failed " + error )
+        });
+      }
+      else {
+        window.location.href="/login";
+      }
     }
 
     

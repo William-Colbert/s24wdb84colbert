@@ -15,17 +15,23 @@ block content
       input#number_of_patients(type="number", name='number_of_patients') 
     input(type="submit")
   script.
+    let pass = #{pass};
     document.forms['DoctorForm'].addEventListener('submit', (event) => {
      event.preventDefault();
-    fetch(event.target.action, {
-     method: 'POST',
-     body: new URLSearchParams(new FormData(event.target))
-    }).then((resp) => {
-     return resp.json();
-    }).then((body) => {
-     alert("Save succeded")
-    }).catch((error) => {
-     alert("Save failed " + error )
-     });
+    if(pass){
+      fetch(event.target.action, {
+       method: 'POST',
+       body: new URLSearchParams(new FormData(event.target))
+      }).then((resp) => {
+       return resp.json();
+      }).then((body) => {
+       alert("Save succeded")
+      }).catch((error) => {
+       alert("Save failed " + error )
+       });
+      }
+    else{
+      window.location.href="/login";
+    }
     });
     
