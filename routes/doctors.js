@@ -8,7 +8,7 @@ const secured = (req, res, next)=> {
     }
     //console.log("User not logged in");
     res.redirect("/login");
-    console.log("User not logged in. Redirected to login page.");
+    //console.log("User not logged in. Redirected to login page.");
   }
 
 /* GET home page. */
